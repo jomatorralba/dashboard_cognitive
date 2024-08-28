@@ -1,0 +1,186 @@
+<html><head><base href="https://cognitive-exercises.com/dashboard/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tareas Cognitivas</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f4f8;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    h1 {
+        color: #2c3e50;
+        font-size: 36px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 700;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    .category {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .category:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    .category-title {
+        font-weight: 700;
+        padding: 20px;
+        color: #fff;
+        font-size: 24px;
+        background-color: #3498db;
+        text-align: center;
+    }
+    .category-content {
+        padding: 25px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        margin-bottom: 20px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 15px;
+        transition: background-color 0.3s ease;
+    }
+    li:hover {
+        background-color: #e9ecef;
+    }
+    a {
+        color: #3498db;
+        text-decoration: none;
+        font-size: 18px;
+        display: block;
+        transition: color 0.3s ease;
+    }
+    a:hover {
+        color: #2980b9;
+    }
+    .description {
+        font-size: 14px;
+        color: #666;
+        margin-top: 8px;
+    }
+    .lang-switch {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .lang-switch:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+    @media (max-width: 600px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+        h1 {
+            font-size: 28px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Tareas Cognitivas</h1>
+    <button class="lang-switch" onclick="toggleLanguage()">English</button>
+
+    <div class="grid">
+        <div class="category">
+            <div class="category-title">Atención</div>
+            <div class="category-content">
+                <ul>
+                    <li>
+                        <a href="https://jomatorralba.github.io/FocusGrid/" target="_blank">Focus Grid</a>
+                        <div class="description">Mide la velocidad y precisión de tu atención visual al localizar objetivos específicos en una cuadrícula compleja.</div>
+                    </li>
+                    <li>
+                        <a href="https://jomatorralba.github.io/Flanker-Task/" target="_blank">Posner Cueing Task</a>
+                        <div class="description">Evalúa tu capacidad de atención espacial y el efecto de pistas visuales previas en tu tiempo de reacción.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-title">Memoria de Trabajo</div>
+            <div class="category-content">
+                <ul>
+                    <li>
+                        <a href="https://jomatorralba.github.io/MemoryMatrix/" target="_blank">Memory Matrix</a>
+                        <div class="description">Evalúa tu capacidad de memoria visual a corto plazo mediante la reproducción de patrones de complejidad creciente.</div>
+                    </li>
+                    <li>
+                        <a href="https://jomatorralba.github.io/ReverseMatrix/" target="_blank">Reverse Matrix</a>
+                        <div class="description">Mide tu habilidad para manipular información visual en la memoria de trabajo invirtiendo secuencias presentadas.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        console.log(`Tarea seleccionada: ${this.textContent}`);
+    });
+});
+
+function toggleLanguage() {
+    const isSpanish = document.querySelector('h1').textContent === 'Tareas Cognitivas';
+    
+    if (isSpanish) {
+        document.querySelector('h1').textContent = 'Cognitive Tasks';
+        document.querySelector('.lang-switch').textContent = 'Español';
+        document.querySelectorAll('.category-title')[0].textContent = 'Attention';
+        document.querySelectorAll('.category-title')[1].textContent = 'Working Memory';
+        document.querySelectorAll('.description')[0].textContent = 'Measures the speed and accuracy of your visual attention when locating specific targets in a complex grid.';
+        document.querySelectorAll('.description')[1].textContent = 'Evaluates your spatial attention capacity and the effect of prior visual cues on your reaction time.';
+        document.querySelectorAll('.description')[2].textContent = 'Assesses your short-term visual memory capacity by reproducing patterns of increasing complexity.';
+        document.querySelectorAll('.description')[3].textContent = 'Measures your ability to manipulate visual information in working memory by reversing presented sequences.';
+    } else {
+        document.querySelector('h1').textContent = 'Tareas Cognitivas';
+        document.querySelector('.lang-switch').textContent = 'English';
+        document.querySelectorAll('.category-title')[0].textContent = 'Atención';
+        document.querySelectorAll('.category-title')[1].textContent = 'Memoria de Trabajo';
+        document.querySelectorAll('.description')[0].textContent = 'Mide la velocidad y precisión de tu atención visual al localizar objetivos específicos en una cuadrícula compleja.';
+        document.querySelectorAll('.description')[1].textContent = 'Evalúa tu capacidad de atención espacial y el efecto de pistas visuales previas en tu tiempo de reacción.';
+        document.querySelectorAll('.description')[2].textContent = 'Evalúa tu capacidad de memoria visual a corto plazo mediante la reproducción de patrones de complejidad creciente.';
+        document.querySelectorAll('.description')[3].textContent = 'Mide tu habilidad para manipular información visual en la memoria de trabajo invirtiendo secuencias presentadas.';
+    }
+}
+</script>
+</body>
+</html>
